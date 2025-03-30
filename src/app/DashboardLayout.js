@@ -435,7 +435,7 @@ export default function Layout({ children }) {
         variant="persistent"
         anchor="left"
         open={open}
-   className="bg-primary"   >
+   className=""   >
         <DrawerHeader className="bg-primary">
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
