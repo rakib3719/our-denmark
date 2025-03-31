@@ -20,8 +20,8 @@ import ListItemText from "@mui/material/ListItemText";
 import { ExpandLess, ExpandMore, Inbox, Mail } from "@mui/icons-material";
 import Collapse from "@mui/material/Collapse";
 import Link from "next/link";
-import { FaUserCircle, FaBell, FaSignOutAlt, FaPhone, FaLocationArrow, FaMobile, FaFileImport, FaKey, FaMoneyBillWave } from "react-icons/fa";
-import { MdOutlineAccountBalanceWallet } from "react-icons/md";
+import { FaUserCircle, FaBell, FaSignOutAlt, FaPhone, FaLocationArrow, FaMobile, FaFileImport, FaKey, FaMoneyBillWave, FaArrowAltCircleLeft } from "react-icons/fa";
+import { MdOutlineAccountBalanceWallet, MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { Menu, MenuItem, Avatar, Badge } from "@mui/material";
 import { motion } from "framer-motion";
 
@@ -29,8 +29,25 @@ import { motion } from "framer-motion";
 import { MdOutlineAssignment, MdOutlineSpaceDashboard } from "react-icons/md";
 import { IoCopyOutline, IoFingerPrintOutline } from "react-icons/io5";
 import { LiaIdCardSolid } from "react-icons/lia";
+import { usePathname } from "next/navigation";
 
-const drawerWidth = 240;
+const drawerWidth = 260;
+
+// Add these styled components at the top with other styled components
+const MenuItemContainer = styled('div')({
+  width: '100%',
+  maxWidth: drawerWidth,
+  margin: '2px 0',
+});
+
+const SubMenuItem = styled(ListItemButton)(({ theme }) => ({
+  '&:hover': {
+ 
+    borderRadius: '8px',
+    transition: 'background-color 0.3s ease',
+    color:'white'
+  },
+}));
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -120,22 +137,22 @@ const menuItems = [
       {
         menuName: "গ্রামীণ বায়োমেক্ট্রিস",
         link: "/gp-biometric",
-        icon: <Inbox />,
+       
       },
       {
         menuName: "বাংলালিংক বায়োমেক্ট্রিস",
         link: "/bl-baiometric",
-        icon: <Mail />,
+   
       },
       {
         menuName: "রবি/এয়ারটেল বায়োমেক্ট্রিস",
         link: "/robi-airtel-baiometric",
-        icon: <Mail />,
+     
       },
       {
         menuName: "টেলিটক বায়োমেক্ট্রিস",
         link: "/talitalk-baiometric",
-        icon: <Mail />,
+      
       },
     ],
   },
@@ -146,22 +163,22 @@ const menuItems = [
       {
         menuName: "গ্রামীণ বায়োমেক্ট্রিস",
         link: "/nid-to-all",
-        icon: <Inbox />,
+ 
       },
       {
         menuName: "NID to (গ্রামীন )",
         link: "/nid-to-gp",
-        icon: <Mail />,
+      
       },
       {
         menuName: " NID to (রবি/এয়ারটেল)  ",
         link: "/nid-to-robi-airtel",
-        icon: <Mail />,
+     
       },
       {
         menuName: "NID To (বাংলালিংক)",
         link: "/nid-to-bl",
-        icon: <Mail />,
+        
       },
     ],
   },
@@ -172,14 +189,16 @@ const menuItems = [
       {
         menuName: "কল লিষ্ট (৩ মাসের জন্য)",
         link: "/call-list3",
-        icon: <Inbox />,
+      
       },
       {
         menuName: "কল লিষ্ট (৬ মাসের জন্য)",
         link: "/call-list6",
-        icon: <Mail />,
+      
       }
     ],
+
+    
   },
   {
     menuName: "লোকেশন",
@@ -188,17 +207,17 @@ const menuItems = [
       {
         menuName: "গ্রামীণ(লোকেশন)",
         link: "/gp-location",
-        icon: <Inbox />,
+        
       },
       {
         menuName: "বাংলালিংক(লোকেশন)",
         link: "/bl-location",
-        icon: <Mail />,
+       
       },
       {
         menuName: "রবি / এয়ারটেল(লোকেশন)",
         link: "/robi-airtel-location",
-        icon: <Mail />,
+       
       }
     ],
   },
@@ -209,17 +228,17 @@ const menuItems = [
       {
         menuName: "বিকাশ ইনফো",
         link: "/bkash-info",
-        icon: <Inbox />,
+      
       },
       {
         menuName: "নগদ ইনফো",
         link: "/nagad-info",
-        icon: <Mail />,
+        
       },
       {
         menuName: "রকেট ইনফো",
         link: "/rocket-info",
-        icon: <Mail />,
+      
       }
     ],
   },
@@ -230,15 +249,18 @@ const menuItems = [
       {
         menuName: "Draft 1",
         link: "/drafts-1",
-        icon: <Inbox />,
+      
       },
       {
         menuName: "Draft 2",
         link: "/drafts-2",
-        icon: <Mail />,
+        
       },
     ],
   },
+
+
+  
   {
     menuName: "Sent Emails",
     link: "/sent",
@@ -247,6 +269,8 @@ const menuItems = [
 ];
 
 export default function Layout({ children }) {
+
+  const pathname = usePathname()
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [submenuOpen, setSubmenuOpen] = React.useState({});
@@ -302,9 +326,9 @@ export default function Layout({ children }) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap component="div">
+            {/* <Typography variant="h6" noWrap component="div">
               Persistent Drawer with Submenus
-            </Typography>
+            </Typography> */}
           </div>
 
           <div className="flex items-center gap-4">
@@ -435,7 +459,7 @@ export default function Layout({ children }) {
         variant="persistent"
         anchor="left"
         open={open}
-   className=""   >
+   >
         <DrawerHeader className="bg-primary">
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
@@ -445,44 +469,71 @@ export default function Layout({ children }) {
 
     <div className="bg-primary">
     <List className="bg-primary h-full min-h-screen">
-          {menuItems.map((item) => (
-            <React.Fragment key={item.menuName}>
-              {/* 🔹 Simple Menu Item */}
-              {!item.submenu ? (
-                <ListItem disablePadding>
-                  <ListItemButton component={Link} href={item.link} >
-                    <ListItemIcon className="-mr-4 items-center"><span className="text-2xl">{item.icon}</span></ListItemIcon>
-                    <ListItemText primary={item.menuName} />
-                  </ListItemButton>
-                </ListItem>
-              ) : (
-                <>
-                  {/* 🔹 Parent Menu Item with Submenu */}
-                  <ListItem disablePadding>
-                    <ListItemButton onClick={() => toggleSubmenu(item.menuName)}>
-                      <ListItemIcon className="-mr-4">{item.icon}</ListItemIcon>
-                      <ListItemText primary={item.menuName} />
-                      {submenuOpen[item.menuName] ? <ExpandLess /> : <ExpandMore />}
-                    </ListItemButton>
-                  </ListItem>
-                  {/* 🔹 Submenu Items (Collapsible) */}
-                  <Collapse in={submenuOpen[item.menuName]} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding sx={{ pl: 2 }}>
-                      {item.submenu.map((sub) => (
-                        <ListItem key={sub.menuName} disablePadding>
-                          <ListItemButton component={Link} href={sub.link}>
-                            <ListItemIcon className="-mr-4">{sub.icon}</ListItemIcon>
-                            <ListItemText primary={sub.menuName} className=" text-sm" />
-                          </ListItemButton>
-                        </ListItem>
-                      ))}
-                    </List>
-                  </Collapse>
-                </>
-              )}
-            </React.Fragment>
-          ))}
-        </List>
+  {menuItems.map((item) => (
+    <React.Fragment key={item.menuName}>
+      {/* 🔹 Simple Menu Item */}
+      {!item.submenu ? (
+        <MenuItemContainer>
+          <ListItem className="rounded-2xl">
+            <Link
+
+              component={Link} 
+              href={item.link} 
+              className={`flex items-center w-full px-3 py-4 -mt-2 cursor-pointer  text-menu  btn-hover rounded-xl ${pathname === item.link ? 'bg-secondary text-white active-color':''}`}
+            >
+             <span className="min-w-[36px]">
+                <span className="text-xl ">{item.icon}</span>
+            </span>
+              <p className="text-sm flex-grow whitespace-nowrap">{item.menuName}</p>
+            </Link>
+          </ListItem>
+        </MenuItemContainer>
+      ) : (
+        <>
+          {/* 🔹 Parent Menu Item with Submenu */}
+          <div className="ml-4">
+            <div 
+              className="flex items-center w-[93%] px-3 py-4 text-menu cursor-pointer btn-hover rounded-xl"
+            >
+              <ListItemButton 
+                onClick={() => toggleSubmenu(item.menuName)}
+                sx={{ padding: 0 }}
+              >
+                <ListItemIcon className="min-w-[36px] text-xl">
+                  {item.icon}
+                </ListItemIcon>
+                <p className="text-sm -ml-5 flex-grow whitespace-nowrap">{item.menuName}</p>
+                {submenuOpen[item.menuName] ? 
+              <MdOutlineKeyboardArrowDown className="text-base" />: 
+                  <MdOutlineKeyboardArrowRight className="text-base" />
+                }
+              </ListItemButton>
+            </div>
+          </div>
+          
+          {/* 🔹 Submenu Items (Collapsible) */}
+          <Collapse in={submenuOpen[item.menuName]} timeout="auto" unmountOnExit>
+            <div  className="space-y-4 ml-6 my-2">
+              {item.submenu.map((sub) => (
+                <div key={sub.menuName}>
+                  <Link
+                   key={sub.menuName}
+                    href={sub.link}
+                  
+                    className="py-4 h-6 px-6 w-full text-menu  btn-hover"
+                  >
+                   
+                   {sub.menuName}
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </Collapse>
+        </>
+      )}
+    </React.Fragment>
+  ))}
+</List>
     </div>
       </Drawer>
 

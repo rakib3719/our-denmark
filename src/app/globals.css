@@ -10,7 +10,30 @@ body {
 .bg-primary{
   background-color: #e7f2fd !important;
 }
+.btn-secondary{
+  background-color: #4070f4 !important;
+  border-radius: 10px !important;
 
+
+}
+
+.active-color{
+  color: white !important;
+}
+.bg-secondary{
+  background-color: #4070f4 !important;
+}
+
+.btn-hover:hover{
+  background-color: #4070f4 !important;
+  color: white !important;
+  border-radius: 10px;
+  
+}
+
+.text-menu{
+  color: #707070;
+}
 
 .btn-bg-primary{
   background-color: #4070f4 !important;
@@ -106,3 +129,53 @@ body {
 
 
 
+
+
+.table-container {
+  width: 100%;
+}
+@media (min-width: 320px) and (max-width: 349px) {
+  .table-container {
+    width: 300px;
+  }
+}
+@media (min-width: 350px) and (max-width: 369px) {
+  .table-container {
+    width: 350px;
+  }
+}
+@media (min-width: 370px) and (max-width: 389px) {
+  .table-container {
+    width: 370px;
+  }
+}
+@media (min-width: 390px) and (max-width: 399px) {
+  .table-container {
+    width: 390px;
+  }
+}
+@media (min-width: 400px) and (max-width: 419px) {
+  .table-container {
+    width: 400px;
+  }
+}
+@media (min-width: 420px) and (max-width: 439px) {
+  .table-container {
+    width: 420px;
+  }
+}
+@media (min-width: 440px) and (max-width: 499px) {
+  .table-container {
+    width: 450px;
+  }
+}
+@media (min-width: 500px) and (max-width: 599px) {
+  .table-container {
+    width: 500px;
+  }
+}
+@media (min-width: 600px) {
+  .table-container {
+    width: 100%;
+  }
+}
