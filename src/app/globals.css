@@ -35,7 +35,13 @@ body {
 
 
 }
+.text-secondary{
+color: #4070f4 !important;
+}
 
+.fix-w-60px{
+  width: 60px !important;
+}
 .active-color{
   color: white !important;
 }

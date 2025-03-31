@@ -27,7 +27,7 @@ import { motion } from "framer-motion";
 
 // icon import
 import { MdOutlineAssignment, MdOutlineSpaceDashboard } from "react-icons/md";
-import { IoCopyOutline, IoFingerPrintOutline } from "react-icons/io5";
+import { IoCopyOutline, IoFingerPrintOutline, IoReorderThreeOutline } from "react-icons/io5";
 import { LiaIdCardSolid } from "react-icons/lia";
 import { usePathname } from "next/navigation";
 
@@ -459,16 +459,25 @@ export default function Layout({ children }) {
         variant="persistent"
         anchor="left"
         open={open}
+        className="relative"
    >
-        <DrawerHeader className="bg-primary">
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+        <div className="h-[302px] w-[260px] relative">
+        <DrawerHeader className="bg-primary w-[260px] border-b border-gray-300 border-r-0 z-50 fixed top-0">
+         <div className="flex justify-start">
+         <IconButton onClick={handleDrawerClose} >
+            {theme.direction === "ltr" ? <MenuIcon /> :  <IoReorderThreeOutline className="text-secondary"/>}
           </IconButton>
+         </div>
         </DrawerHeader>
+        </div>
+
+      
+
         <Divider />
 
-    <div className="bg-primary">
+    <div className="bg-primary mt-16">
     <List className="bg-primary h-full min-h-screen">
+<p className="text-menu ml-8 mt-4 mb-2  mr-2 text-xl">Dashboard</p>
   {menuItems.map((item) => (
     <React.Fragment key={item.menuName}>
       {/* 🔹 Simple Menu Item */}
@@ -513,21 +522,21 @@ export default function Layout({ children }) {
           
           {/* 🔹 Submenu Items (Collapsible) */}
           <Collapse in={submenuOpen[item.menuName]} timeout="auto" unmountOnExit>
-            <div  className="space-y-4 ml-6 my-2">
+            <section  className="space-y-4 ml-6 my-2">
               {item.submenu.map((sub) => (
-                <div key={sub.menuName}>
+                <section key={sub.menuName} className="my-6 w-[200px]">
                   <Link
                    key={sub.menuName}
                     href={sub.link}
                   
-                    className="py-4 h-6 px-6 w-full text-menu  btn-hover"
+                    className={`py-4 whitespace-nowrap text-sm w-full px-6 text-menu  btn-hover ${pathname === sub.link ? 'bg-secondary active-color rounded-[10px]' : ''}`}
                   >
                    
                    {sub.menuName}
                   </Link>
-                </div>
+                </section>
               ))}
-            </div>
+            </section>
           </Collapse>
         </>
       )}
