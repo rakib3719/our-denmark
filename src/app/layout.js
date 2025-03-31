@@ -27,8 +27,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${notoSerifBengali.variable} ${geistMono.variable} antialiased`}>
+    <html lang="bn">
+      <body>
         <Layout>{children}</Layout>
       </body>
     </html>
