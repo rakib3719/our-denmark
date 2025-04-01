@@ -19,12 +19,12 @@
 
 import React from 'react';
 import  "../styles/OrderForm.css";
-const OrderForm = () => {
+const OrderForm = ({title}) => {
     return (
         <div>
           <div className='flex justify-center'>
           <div className ="card1">
-                <h3>Sign Copy Order</h3>
+                <h3>{title}</h3>
                 <form method="POST" enctype="multipart/form-data">
                  
                     <div className ="mb-3">

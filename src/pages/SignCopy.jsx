@@ -5,7 +5,7 @@ const SignCopy = () => {
     return (
         <div>
 
-            <OrderForm />
+            <OrderForm title={'Sign in Copy Order'}/>
         </div>
     );
 };

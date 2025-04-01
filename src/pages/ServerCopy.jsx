@@ -4,7 +4,7 @@ import React from 'react';
 const ServerCopy = () => {
     return (
         <div>
-            <OrderForm />
+            <OrderForm title='Server Copy Order' />
         </div>
     );
 };
