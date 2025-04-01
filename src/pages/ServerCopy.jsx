@@ -1,9 +1,10 @@
+import OrderForm from '@/components/OrderForm';
 import React from 'react';
 
 const ServerCopy = () => {
     return (
         <div>
-            This is server copy
+            <OrderForm />
         </div>
     );
 };
